@@ -1,0 +1,141 @@
+/* QR 스캐너 영역 컨테이너 */
+.qr-scanner-container {
+  position: relative;
+  width: 100%;
+  height: 55%;
+  background-color: #000; /* 비디오 배경은 검은색 유지 */
+}
+
+/* 스캔 결과 알림창 */
+.resultContainer {
+  position: absolute;
+  top: 20px;
+  left: 5%;
+  right: 5%;
+  z-index: 10;
+  color: var(--text);
+  padding: 16px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  text-align: center;
+  white-space: pre-line;
+
+  /* 애니메이션 */
+  animation: slideDownFadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 결과 상태별 스타일 */
+.green {
+  background-color: #ecfdf5;
+  color: var(--success);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.red {
+  background-color: #fff1f2;
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+.blue {
+  background-color: #eff6ff;
+  color: var(--info);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* 저장 버튼 */
+.save-button {
+  background: var(--info);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+.save-button:hover {
+  filter: brightness(1.1);
+}
+.save-button:active {
+  transform: scale(0.98);
+}
+
+/* --- 가이드라인 스타일 --- */
+
+.custom-guideline-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guideline-box {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+}
+
+/* 코너에 빛나는 애니메이션 효과 */
+@keyframes pulse {
+  0% {
+    border-color: rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    border-color: rgba(96, 165, 250, 1);
+  }
+  100% {
+    border-color: rgba(59, 130, 246, 0.7);
+  }
+}
+
+.guideline-corner {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border-width: 6px;
+  border-style: solid;
+  border-radius: 12px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.guideline-corner-tl {
+  top: -3px;
+  left: -3px;
+  border-color: var(--info) transparent transparent var(--info);
+  border-top-left-radius: 16px;
+}
+.guideline-corner-tr {
+  top: -3px;
+  right: -3px;
+  border-color: var(--info) var(--info) transparent transparent;
+  border-top-right-radius: 16px;
+}
+.guideline-corner-bl {
+  bottom: -3px;
+  left: -3px;
+  border-color: transparent transparent var(--info) var(--info);
+  border-bottom-left-radius: 16px;
+}
+.guideline-corner-br {
+  bottom: -3px;
+  right: -3px;
+  border-color: transparent var(--info) var(--info) transparent;
+  border-bottom-right-radius: 16px;
+}

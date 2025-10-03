@@ -1,0 +1,536 @@
+/* UI 컨트롤 전체 영역 */
+.ui-control {
+  flex: 1;
+  padding: 16px;
+  background-color: var(--card);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 로그인 버튼을 담는 컨테이너 */
+.login {
+  width: 100%;
+}
+
+/* --- 로그인 버튼 스타일 수정 --- */
+.login-btn {
+  width: 100%; /* 너비를 100%로 설정 */
+  padding: 16px; /* 상하 패딩을 키워 버튼 높이 확보 */
+  font-size: 18px; /* 폰트 크기 증가 */
+  font-weight: 700; /* 폰트 굵게 */
+
+  /* 아이콘과 텍스트를 정렬하기 위한 flex 설정 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 아이콘과 텍스트 사이 간격 */
+}
+
+/* --- 사용자 정보 영역 --- */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.user-details {
+  min-width: 0;
+}
+
+.user-details h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 로그아웃 버튼: .btn 클래스에 danger 스타일 추가 */
+.logout-btn {
+  background-color: var(--danger);
+  flex-shrink: 0;
+}
+.logout-btn:hover {
+  background-color: var(--danger);
+  filter: brightness(1.1);
+}
+
+/* --- 로그인 팝업 및 폼 관련 스타일 (기존 스타일 유지 및 일부 변수 적용) --- */
+
+.login-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-popup {
+  background-color: var(--card);
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: popupSlideIn 0.3s ease-out;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.login-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.login-popup-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: var(--bg);
+}
+
+.login-form {
+  padding: 24px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  color: var(--text);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.login-submit-btn {
+  width: 100%;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.login-submit-btn:hover {
+  filter: brightness(1.1);
+}
+
+.login-submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* (이하 다른 팝업 스타일은 기존과 거의 동일하게 유지) */
+
+.id-error-message,
+.pw-error-message,
+.mobile-error-message,
+.error {
+  color: var(--danger);
+  margin: 4px 0 0 0;
+  font-size: 13px;
+}
+.id-success-message,
+.message {
+  color: var(--success);
+  margin: 4px 0 0 0;
+  font-size: 13px;
+}
+.verification-success {
+  color: var(--success);
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.input-with-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.input-with-button button {
+  flex-shrink: 0;
+  padding: 0 14px;
+  height: 45px;
+  background-color: #eef2ff;
+  color: var(--accent);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.input-with-button button:hover {
+  filter: brightness(0.95);
+}
+.input-with-button button:disabled {
+  background-color: #f1f1f1;
+  color: var(--muted);
+  border-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+/* 구분선 */
+.divider {
+  text-align: center;
+  margin: 24px 0;
+  position: relative;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  z-index: 0;
+}
+.divider span {
+  background-color: var(--card);
+  padding: 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 소셜 로그인 버튼 컨테이너 */
+.social-login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 공통 소셜 버튼 스타일 */
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  gap: 10px;
+}
+.social-btn:hover {
+  filter: brightness(1.05);
+}
+.social-btn:active {
+  transform: scale(0.98);
+  filter: brightness(0.95);
+}
+
+/* 아이콘 공통 스타일 */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* 네이버 버튼 */
+.naver-btn {
+  background-color: #03c75a;
+  color: white;
+}
+.naver-btn .social-icon {
+  /* 네이버 로고 'N' 아이콘 */
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  color: #03c75a;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* 카카오 버튼 */
+.kakao-btn {
+  background-color: #fee500;
+  color: #191919; /* 카카오 공식 가이드에 따른 텍스트 색상 */
+}
+.kakao-btn .social-icon {
+  /* 카카오 로고 'K' 아이콘 */
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  color: #191919;
+  font-size: 18px;
+}
+
+.user-info-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  margin-bottom: 16px; /* 아래 로그인 버튼과의 간격 */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-info-header {
+  background-color: #f8f9fa; /* 밝은 회색 배경 */
+  padding: 12px 20px;
+  border-bottom: 1px solid #e9ecef; /* 부드러운 경계선 */
+}
+
+.user-info-welcome {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  text-align: center;
+}
+
+.user-info-body {
+  padding: 24px;
+}
+
+.user-info-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #dee2e6;
+}
+
+.user-info-details {
+  min-width: 0;
+}
+
+.user-info-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #212529;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info-email {
+  margin: 0;
+  font-size: 14px;
+  color: #6c757d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info-visit {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.user-info-visit-label {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  color: #868e96;
+}
+
+.user-info-visit-count {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent, #4f46e5); /* 기존 accent 색상 사용 */
+}
+
+.user-info-footer {
+  padding: 0 24px 24px;
+}
+
+.user-info-logout-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f44336; /* 명확한 빨간색 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.user-info-logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+.user-info-logout-btn:active {
+  transform: scale(0.98);
+}
+
+/* 새로운 가이드 섹션 스타일 */
+.Guide {
+  display: flex; /* 카드들을 가로로 나란히 배치 */
+  flex-direction: row;
+  gap: 15px; /* 카드 사이의 간격 */
+  margin-top: 20px;
+  width: 100%;
+}
+
+.guide-card {
+  flex: 1; /* 카드가 공간을 균등하게 차지하도록 함 */
+  padding: 18px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.guide-icon {
+  width: 22px;
+  height: 22px;
+  color: #007bff; /* 아이콘 색상 */
+  margin-right: 10px;
+}
+
+.guide-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0;
+}
+
+.guide-description {
+  font-size: 0.85rem;
+  color: #495057;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 화면이 좁아질 때 (모바일 환경) 카드를 세로로 쌓음 */
+@media (max-width: 768px) {
+  .Guide {
+    flex-direction: column;
+  }
+  .ui-control {
+    max-height: 75vh; /* 화면 높이의 75%를 최대로 설정 (값은 조절 가능) */
+    overflow-y: auto; /* 내용이 max-height를 넘으면 세로 스크롤바 표시 */
+
+    /* (선택) 스크롤바와 콘텐츠가 겹치지 않도록 오른쪽 패딩 추가 */
+  }
+}
