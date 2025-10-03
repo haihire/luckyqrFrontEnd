@@ -15,6 +15,13 @@ export default function Home() {
     // 백엔드 서버에 직접 연결을 확인하는 함수
     const checkBackendConnection = async () => {
       // 환경 변수에서 백엔드 주소를 가져옵니다.
+      console.log("환경 변수:", process);
+      console.log("백엔드 주소:", process.env);
+      console.log(
+        "NEXT_PUBLIC_API_BASE_URL:",
+        process.env.NEXT_PUBLIC_API_BASE_URL
+      );
+
       const backendUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
       // 백엔드 주소가 설정되지 않았으면 아무것도 하지 않습니다.
