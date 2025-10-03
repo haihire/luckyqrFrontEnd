@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     // 백엔드 서버에 직접 연결을 확인하는 함수
     const checkBackendConnection = async () => {
-      // 환경 변수에서 백엔드 주소를 가져옵니다.
+      // 환경 변수에서 백엔드 주소를 가져옵니다. 올바른 커밋
       console.log("환경 변수:", process);
       console.log("백엔드 주소:", process.env);
       console.log(
