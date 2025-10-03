@@ -9,7 +9,7 @@ const QRScanner = dynamic(() => import("../components/QRScanner"), {
 const UIctrl = dynamic(() => import("../components/UIctrl"), {
   ssr: false,
 });
-
+//reSTart
 export default function Home() {
   useEffect(() => {
     const connectionCheck = async () => {
